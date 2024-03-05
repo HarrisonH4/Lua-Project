@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Barrier.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Helper.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="laser.cpp" />
     <ClCompile Include="main.cpp" />

@@ -48,6 +48,9 @@
     <ClCompile Include="Ufo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Helper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Barrier.h">
