@@ -33,6 +33,7 @@
   <ItemGroup>
     <ClInclude Include="Barrier.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Helper.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="laser.h" />
     <ClInclude Include="Mothership.h" />
@@ -42,7 +43,7 @@
     <ClInclude Include="Ufo.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="E:\Desktop\LUA_Test\LUA_SIClone\LUA_SIClone\LuaScript.lua" />
+    <None Include="LuaScript.lua" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

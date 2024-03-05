@@ -77,9 +77,12 @@
     <ClInclude Include="Ufo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Helper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="E:\Desktop\LUA_Test\LUA_SIClone\LUA_SIClone\LuaScript.lua">
+    <None Include="LuaScript.lua">
       <Filter>Lua scripts</Filter>
     </None>
   </ItemGroup>
