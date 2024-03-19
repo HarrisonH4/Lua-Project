@@ -15,6 +15,7 @@ Description:main
 #include "Ufo.h"
 #include "laser.h"
 #include "Mothership.h"
+#include "Helper.h"
 
 using namespace std;
 //globals ***maybe add to a class along with the functions below??***
@@ -32,6 +33,16 @@ void game_start_message();
 int main()
 {
 	srand(time(NULL));//Sets the random seed for the whole game
+	
+	Vector2 pos;
+
+	lua_State* L = luaL_newstate();
+	luaL_openlibs(L);
+
+	pos.FromLua(L, "startpos");
+
+	if (!LuaOK(L, luaL_dofile(L, "LuaScript.lua")))
+		assert(false);
 
 	// DECLARE variables
 	bool is_right = true;//move direction check	
@@ -48,8 +59,11 @@ int main()
 	laser* laser_limit[10]{};
 	laser* Ufo_lasers[10]{};
 
-	the_ship = new Player(500, 625, 5, "assets/player0.bmp");//create the player ship
-	the_ship->addFrame("assets/player1.bmp");
+	level_colour = LuaGetInt(L, "colour");
+	Level_number = LuaGetInt(L, "level");
+
+	the_ship = new Player(pos.x, pos.y, LuaGetInt(L, "lives"), LuaGetStr(L, "playerSprite"));//create the player ship
+	the_ship->addFrame(LuaGetStr(L, "playerSprite"));
 	
 	game_start_message();//DISPLAY THE GAME START MESSAGE 
 	
@@ -447,6 +461,8 @@ int main()
 	//////////////////////////////////////////	
 	delete the_ship;//delete the player ship
 	the_ship = nullptr;
+	if (L)
+		lua_close(L);
 	return 0;
 }
 
