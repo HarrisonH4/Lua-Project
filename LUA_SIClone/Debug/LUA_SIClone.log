@@ -1,2 +1,9 @@
-﻿  main.cpp
+﻿  Helper.cpp
+  Mothership.cpp
+  Player.cpp
+  Scene.cpp
+  Ship.cpp
+  Ufo.cpp
+  main.cpp
+  Generating Code...
   LUA_SIClone.vcxproj -> C:\Users\c2031779\Documents\GitHub\Lua-Project\Debug\LUA_SIClone.exe

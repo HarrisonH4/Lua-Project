@@ -31,10 +31,15 @@ struct Vector2
 
 		lua_pushstring(L, "y");
 		lua_gettable(L, -2);
-		x = (int)lua_tointeger(L, -1);
+		y = (int)lua_tointeger(L, -1);
 		lua_pop(L, 1);
 	}
 };
+
+int CallRandomNumber(lua_State* L, const std::string& fname);
+
+void CallmoveRight(lua_State* L, const std::string& fname, float& xVal, float& frameVal);
+void CallmoveLeft(lua_State* L, const std::string& fname, float& xVal, float& frameVal);
 
 bool LuaOK(lua_State* L, int id);
 int LuaGetInt(lua_State* L, const std::string& name);

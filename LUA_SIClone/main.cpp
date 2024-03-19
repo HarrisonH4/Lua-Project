@@ -24,7 +24,7 @@ Player* the_ship;
 Game* Game_manager;
 int x, y;//used for ufo array coordinates
 
-int randomNumber();//random number generator
+//int randomNumber();//random number generator
 void destroyUFOs();
 void spawnUFOs();
 void display_message(const char* message);
@@ -35,14 +35,13 @@ int main()
 	srand(time(NULL));//Sets the random seed for the whole game
 	
 	Vector2 pos;
-
 	lua_State* L = luaL_newstate();
 	luaL_openlibs(L);
 
-	pos.FromLua(L, "startpos");
-
 	if (!LuaOK(L, luaL_dofile(L, "LuaScript.lua")))
 		assert(false);
+
+	pos.FromLua(L, "startpos");
 
 	// DECLARE variables
 	bool is_right = true;//move direction check	
@@ -121,8 +120,8 @@ int main()
 						{
 							if (DynamicUfoArray[y][x] != nullptr)
 							{
-								laser_generator = randomNumber();
-								if (laser_generator >= 41 - (ufo_counter / 3) && laser_generator <= 50 + (ufo_counter / 3))
+								laser_generator = CallRandomNumber(L, "randomNumber");
+								if (laser_generator >= 9996)
 								{
 									for (int i = 0; i < 10; i++)
 									{
@@ -142,8 +141,8 @@ int main()
 
 					if (the_mothership == NULL)//see if a mothership appears
 					{
-						Mothership_chance = randomNumber();
-						if (Mothership_chance >= 250 && Mothership_chance <= 255)
+						Mothership_chance = CallRandomNumber(L, "randomNumber");
+						if (Mothership_chance >= 9990)
 						{
 							the_mothership = new Mothership(0, 20, "assets/Mothership.bmp");
 							the_mothership->addFrame("assets/Mothership.bmp");
@@ -466,13 +465,13 @@ int main()
 	return 0;
 }
 
-int randomNumber()//random number generator
-{
-	//Gives the remainder of a division of the random seed by the maximum range  
-	//(this will always give an answer between 0 and Max-1)
-	//Then adds one, to return a value in the range from 1 to Max (instead of 0 to Max-1)
-	return (rand() % 18000) + 1;
-}
+//int randomNumber()//random number generator
+//{
+//	//Gives the remainder of a division of the random seed by the maximum range  
+//	//(this will always give an answer between 0 and Max-1)
+//	//Then adds one, to return a value in the range from 1 to Max (instead of 0 to Max-1)
+//	//return (rand() % 18000) + 1;
+//}
 
 void destroyUFOs()
 {

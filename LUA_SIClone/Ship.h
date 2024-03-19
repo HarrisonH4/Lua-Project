@@ -15,6 +15,7 @@ Description: Header file for Ship class
 #include <allegro5/allegro_image.h>
 #include <string>
 #include "Game.h"
+#include "Helper.h"
 #include <vector>
 
 using namespace std;
@@ -39,8 +40,8 @@ public:
 	void setY(int yVal);
 	int getX();
 	int getY();
-	void left();
-	void right();
+	void left() {};
+	void right() {};
 	void down();
 	void draw(void);
 	void addFrame(string filename);
