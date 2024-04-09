@@ -16,6 +16,7 @@ Description: Header file for Player class
 
 using namespace std;
 
+lua_State* L;
 
 class Player: public Ship
 {

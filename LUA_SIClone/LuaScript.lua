@@ -40,3 +40,7 @@ function left( x, currentFrame )
 	end
 	return x,currentFrame
 end
+
+function callMessage()
+	display_message("Ge a life", 1)
+end
