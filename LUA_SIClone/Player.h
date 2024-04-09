@@ -16,7 +16,7 @@ Description: Header file for Player class
 
 using namespace std;
 
-lua_State* L;
+//lua_State* L;
 
 class Player: public Ship
 {
@@ -24,7 +24,7 @@ private:
 	//members
 	int m_lives;
 	int m_score;
-	lua_State* L;
+	lua_State* Ls;
 public:
 	//constructor
 	Player(float xPos, float yPos, int lives, string filename);

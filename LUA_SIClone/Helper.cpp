@@ -72,3 +72,12 @@ void CallmoveLeft(lua_State* L, const std::string& fname, float& xVal, float& fr
 	//pops the values off the stack
 	lua_pop(L, 2);
 }
+
+void CallVoidVoidCFunc(lua_State* L, const std::string& fname)
+{
+	lua_getglobal(L, fname.c_str());
+	if (!lua_isfunction(L, -1))
+		assert(false);
+	if (!LuaOK(L, lua_pcall(L, 0, 0, 0)))
+		assert(false);
+}

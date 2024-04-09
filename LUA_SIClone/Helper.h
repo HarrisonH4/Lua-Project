@@ -14,7 +14,9 @@ extern "C"
 	#include "../lua-5.4.4/include/lauxlib.h"
 	#include "../lua-5.4.4/include/lualib.h"
 }
+
 bool LuaOK(lua_State* L, int id);
+
 struct Vector2
 {
 	int x, y;
@@ -36,14 +38,24 @@ struct Vector2
 	}
 };
 
-void CallVoidVoidCFunc(lua_State* L, const std::string& fname)
-{
-	lua_getglobal(L, fname.c_str());
-	if (!lua_isfunction(L, -1))
-		assert(false);
-	if (!LuaOK(L, lua_pcall(L, 0, 0, 0)))
-		assert(false);
-}
+class Dispatcher {
+public:
+	struct Command {
+		typedef std::function<void(int)> voidintfunc;
+		voidintfunc voidintfunc;
+	};
+	void Init(lua_State* L) {
+		lua_register(L, "CDispatcher", LuaCall);
+	}
+	void Register(const std::string& name, Command cmd) {
+		assert(library.find(name) == library.end());
+			library[name] = cmd;
+	}
+	static int LuaCall(lua_State* L);
+
+private:
+	static std::map<std::string, Command> library;
+};
 
 int CallRandomNumber(lua_State* L, const std::string& fname);
 
@@ -53,4 +65,4 @@ void CallmoveLeft(lua_State* L, const std::string& fname, float& xVal, float& fr
 
 int LuaGetInt(lua_State* L, const std::string& name);
 std::string LuaGetStr(lua_State* L, const std::string& name);
-
+void CallVoidVoidCFunc(lua_State* L, const std::string& fname);

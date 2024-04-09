@@ -1,11 +1,9 @@
 ﻿  Helper.cpp
-  Input.cpp
-  main.cpp
   Mothership.cpp
   Player.cpp
   Scene.cpp
   Ship.cpp
   Ufo.cpp
+  main.cpp
   Generating Code...
-  LINK : \\fs-stu-home.hallam.shu.ac.uk\FS-STU-HOME5\9\c2031779\MyWork\GitHub\Lua-Project\Debug\LUA_SIClone.exe not found or not built by the last incremental link; performing full link
-LINK : fatal error LNK1104: cannot open file 'allegro-5.0.10-md-debug.lib'
+  LUA_SIClone.vcxproj -> \\fs-stu-home.hallam.shu.ac.uk\FS-STU-HOME5\9\c2031779\MyWork\GitHub\Lua-Project\Debug\LUA_SIClone.exe

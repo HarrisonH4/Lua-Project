@@ -18,17 +18,17 @@ Player::Player(float xPos, float yPos, int lives, string filename)
 	m_lives = lives;
 	m_score = 0;
 
-	L = luaL_newstate();
+	Ls = luaL_newstate();
 
-	luaL_openlibs(L);
+	luaL_openlibs(Ls);
 
-	if (!LuaOK(L, luaL_dofile(L, "LuaScript.lua")))
+	if (!LuaOK(Ls, luaL_dofile(Ls, "LuaScript.lua")))
 		assert(false);
 }
 
 Player::~Player()
 {
-	lua_close(L);
+	lua_close(Ls);
 }
 
 //Methods
@@ -74,10 +74,10 @@ void Player::reset_score()
 
 void Player::right()
 {
-	CallmoveRight(L, "right", m_xpos, m_current_frame);
+	CallmoveRight(Ls, "right", m_xpos, m_current_frame);
 }
 
 void Player::left()
 {
-	CallmoveLeft(L, "left", m_xpos, m_current_frame);
+	CallmoveLeft(Ls, "left", m_xpos, m_current_frame);
 }
