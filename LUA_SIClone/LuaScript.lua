@@ -5,7 +5,6 @@ lives = 10
 playerSprite = "assets/Ufoph.bmp"
 
 startpos = {x=0, y=0}
-
 startpos.x = 500
 startpos.y = 650
 
@@ -43,4 +42,9 @@ end
 
 function callMessage()
 	display_message("Ge a life", 1)
+end
+
+
+function  setPlayerScore()
+	CDispatcher("setScore" ,5000)
 end

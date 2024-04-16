@@ -38,25 +38,6 @@ struct Vector2
 	}
 };
 
-class Dispatcher {
-public:
-	struct Command {
-		typedef std::function<void(int)> voidintfunc;
-		voidintfunc voidintfunc;
-	};
-	void Init(lua_State* L) {
-		lua_register(L, "CDispatcher", LuaCall);
-	}
-	void Register(const std::string& name, Command cmd) {
-		assert(library.find(name) == library.end());
-			library[name] = cmd;
-	}
-	static int LuaCall(lua_State* L);
-
-private:
-	static std::map<std::string, Command> library;
-};
-
 int CallRandomNumber(lua_State* L, const std::string& fname);
 
 void CallmoveRight(lua_State* L, const std::string& fname, float& xVal, float& frameVal);
@@ -66,3 +47,22 @@ void CallmoveLeft(lua_State* L, const std::string& fname, float& xVal, float& fr
 int LuaGetInt(lua_State* L, const std::string& name);
 std::string LuaGetStr(lua_State* L, const std::string& name);
 void CallVoidVoidCFunc(lua_State* L, const std::string& fname);
+
+class Dispatcher {
+public:
+	struct Command {
+		typedef std::function<void(int)> voidintfunc;
+		voidintfunc voidintfunct;
+	};
+	void Init(lua_State* L) {
+		lua_register(L, "CDispatcher", LuaCall);
+	}
+	void Register(const std::string& name, Command cmd) {
+		assert(library.find(name) == library.end());
+		library[name] = cmd;
+	}
+	static int LuaCall(lua_State* L);
+
+private:
+	static std::map<std::string, Command> library;
+};

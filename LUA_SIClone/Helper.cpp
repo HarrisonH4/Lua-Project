@@ -91,10 +91,10 @@ int Dispatcher::LuaCall(lua_State* L)
 	std::map<string, Command>::iterator it = library.find(name);
 	assert(it != library.end());
 	Command& cmd = (*it).second;
-	if (cmd.voidintfunc)
+	if (cmd.voidintfunct)
 	{
 		int param = lua_tointeger(L, 2);
-		cmd.voidintfunc(param);
+		cmd.voidintfunct(param);
 		lua_pop(L, 1);
 	}
 	else
