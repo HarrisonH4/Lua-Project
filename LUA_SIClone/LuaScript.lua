@@ -13,6 +13,11 @@ startpos.y = 650
 lifeGain = 2
 settleTheScore = 10000
 
+--mothership chance
+--laser chance
+--level number
+--level colour
+
 math.randomseed(os.time())
 
 function randomNumber()
