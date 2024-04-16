@@ -201,7 +201,7 @@ int main()
 										delete DynamicUfoArray[y][x];
 										DynamicUfoArray[y][x] = nullptr;
 										//the_ship->setScore(100);
-										CallVoidVoidCFunc(L, "setScore");
+										CallVoidVoidCFunc(L, "setPlayerScore");
 										delete laser_limit[i];
 										laser_limit[i] = nullptr;
 									}
@@ -215,16 +215,16 @@ int main()
 							{																	
 								the_mothership->reduceLives();
 								//the_ship->setScore(20);
-								CallVoidVoidCFunc(L, "setScore");
+								CallVoidVoidCFunc(L, "setPlayerScore");
 								if (the_mothership->getLives() <= 0)
 								{
 									the_ship->increaseLives();
 									//the_ship->setScore(300);
-									CallVoidVoidCFunc(L, "setScore");
+									CallVoidVoidCFunc(L, "setPlayerScore");
 									delete the_mothership;
 									the_mothership = nullptr;
 									//the_ship->setScore(100);
-									CallVoidVoidCFunc(L, "setScore");
+									CallVoidVoidCFunc(L, "setPlayerScore");
 									delete laser_limit[i];
 									laser_limit[i] = nullptr;
 									laser_limit[i] = NULL;

@@ -8,6 +8,11 @@ startpos = {x=0, y=0}
 startpos.x = 500
 startpos.y = 650
 
+-- My own variables
+
+lifeGain = 2
+settleTheScore = 10000
+
 math.randomseed(os.time())
 
 function randomNumber()
@@ -41,10 +46,9 @@ function left( x, currentFrame )
 end
 
 function callMessage()
-	display_message("Ge a life", 1)
+	display_message("Get a life", lifeGain)
 end
 
-
-function  setPlayerScore()
-	CDispatcher("setScore" ,5000)
+function setPlayerScore()
+	CDispatcher("setScore", settleTheScore)
 end
