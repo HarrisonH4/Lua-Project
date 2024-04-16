@@ -73,6 +73,8 @@ int main()
 	
 	while (the_ship->getLives() > 0)// keep going until the ship is dead
 	{			
+			lua_settop(L, 0);
+
 			al_flush_event_queue(Input_manager->Get_event());//clears the queue of events
 
 			spawnUFOs();
