@@ -12,10 +12,11 @@ startpos.y = 650
 
 lifeGain = 2
 settleTheScore = 10000
-mothershipChance
-laser chance
-lvlNumber
-lvlColour
+lvlNumber = 1
+lvlColour = 0
+--mothershipChance
+--laserEncounter
+
 
 math.randomseed(os.time())
 

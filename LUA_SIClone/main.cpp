@@ -47,8 +47,8 @@ int main()
 	// DECLARE variables
 	bool is_right = true;//move direction check	
 	int ufo_counter = 0;//how many ufos destroyed (this tells the game when to start a new level)
-	int lvlColour = 0;//for setting the background colour for each level and also defines the max number of levels
-	int lvlNumber = 1;//used for displaying the level number
+	int lvlColour = LuaGetInt(L, "lvlColour");//for setting the background colour for each level and also defines the max number of levels
+	int lvlNumber = LuaGetInt(L, "lvlNumber");//used for displaying the level number
 	int laser_generator;//chance of ufo firing
 	int Mothership_chance;//chance of mothership appearing
 
