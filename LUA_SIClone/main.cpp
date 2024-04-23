@@ -47,8 +47,8 @@ int main()
 	// DECLARE variables
 	bool is_right = true;//move direction check	
 	int ufo_counter = 0;//how many ufos destroyed (this tells the game when to start a new level)
-	int level_colour = 0;//for setting the background colour for each level and also defines the max number of levels
-	int Level_number = 1;//used for displaying the level number
+	int lvlColour = 0;//for setting the background colour for each level and also defines the max number of levels
+	int lvlNumber = 1;//used for displaying the level number
 	int laser_generator;//chance of ufo firing
 	int Mothership_chance;//chance of mothership appearing
 
@@ -59,8 +59,8 @@ int main()
 	laser* laser_limit[10]{};
 	laser* Ufo_lasers[10]{};
 
-	level_colour = LuaGetInt(L, "colour");
-	Level_number = LuaGetInt(L, "level");
+	lvlColour = LuaGetInt(L, "colour");
+	lvlNumber = LuaGetInt(L, "level");
 
 	the_ship = new Player(pos.x, pos.y, LuaGetInt(L, "lives"), LuaGetStr(L, "playerSprite"));//create the player ship
 	the_ship->addFrame(LuaGetStr(L, "playerSprite"));
@@ -144,7 +144,7 @@ int main()
 					}
 
 					// colour entire display with rgb colour
-					al_clear_to_color(al_map_rgb(level_colour, level_colour*0.5, level_colour*0.25));
+					al_clear_to_color(al_map_rgb(lvlColour, lvlColour*0.5, lvlColour*0.25));
 
 					if (the_mothership == NULL)//see if a mothership appears
 					{
@@ -326,7 +326,7 @@ int main()
 							for (y = 0; y < 5; y++)
 							{
 								if (DynamicUfoArray[y][x] != NULL)
-									DynamicUfoArray[y][x]->right(ufo_counter, Level_number);
+									DynamicUfoArray[y][x]->right(ufo_counter, lvlNumber);
 							}
 						}
 					}
@@ -338,7 +338,7 @@ int main()
 								for (y = 0; y < 5; y++)
 								{
 									if (DynamicUfoArray[y][x] != NULL)
-										DynamicUfoArray[y][x]->left(ufo_counter, Level_number);
+										DynamicUfoArray[y][x]->left(ufo_counter, lvlNumber);
 								}
 							}
 						}
@@ -353,7 +353,7 @@ int main()
 
 					al_draw_textf(Game_manager->small_message(), al_map_rgb(100, 250, 50), 0, 0, 0, "lives: %d", the_ship->getLives());
 					al_draw_textf(Game_manager->small_message(), al_map_rgb(100, 250, 50), 200, 0, 0, "Score: %d", the_ship->getScore());
-					al_draw_textf(Game_manager->small_message(), al_map_rgb(100, 250, 50), 750, 0, 0, "level: %d", Level_number);
+					al_draw_textf(Game_manager->small_message(), al_map_rgb(100, 250, 50), 750, 0, 0, "level: %d", lvlNumber);
 					al_draw_textf(Game_manager->small_message(), al_map_rgb(100, 250, 50), 0, 670, 0, "Game design and programming : Philip Alassad");
 					al_draw_textf(Game_manager->small_message(), al_map_rgb(225, 100, 225), 600, 670, 0, "Assets and artwork : James Dorrington");
 
@@ -369,7 +369,7 @@ int main()
 							al_draw_textf(Game_manager->small_message(), al_map_rgb(255, 0, 0), 0, 400, 0, "ANOTHER GO? (press enter): %d", i);
 							al_draw_textf(Game_manager->small_message(), al_map_rgb(255, 0, 0), 0, 0, 0, "lives: %d", the_ship->getLives());
 							al_draw_textf(Game_manager->small_message(), al_map_rgb(255, 0, 0), 200, 0, 0, "Score: %d", the_ship->getScore());
-							al_draw_textf(Game_manager->small_message(), al_map_rgb(255, 0, 0), 750, 0, 0, "level: %d", Level_number);
+							al_draw_textf(Game_manager->small_message(), al_map_rgb(255, 0, 0), 750, 0, 0, "level: %d", lvlNumber);
 							al_flip_display();
 							al_rest(0.25);
 
@@ -378,7 +378,7 @@ int main()
 							al_draw_textf(Game_manager->small_message(), al_map_rgb(255, 0, 0), 0, 400, 0, "ANOTHER GO? (press enter): %d", i);
 							al_draw_textf(Game_manager->small_message(), al_map_rgb(0, 0, 0), 0, 0, 0, "lives: %d", the_ship->getLives());
 							al_draw_textf(Game_manager->small_message(), al_map_rgb(255, 0, 0), 200, 0, 0, "Score: %d", the_ship->getScore());
-							al_draw_textf(Game_manager->small_message(), al_map_rgb(0, 0, 0), 750, 0, 0, "level: %d", Level_number);
+							al_draw_textf(Game_manager->small_message(), al_map_rgb(0, 0, 0), 750, 0, 0, "level: %d", lvlNumber);
 							al_flip_display();
 							al_rest(0.25);
 
@@ -387,8 +387,8 @@ int main()
 							{
 								the_ship->reset_score();
 								ufo_counter = 0;//how many ufos destroyed (this tells the game when to start a new level)
-								level_colour = 0;//for setting the background colour for each level and also defines the max number of levels
-								Level_number = 1;
+								lvlColour = 0;//for setting the background colour for each level and also defines the max number of levels
+								lvlNumber = 1;
 								the_ship->reset_lives();
 								game_start_message();//DISPLAY THE GAME START MESSAGE 
 								for (int i = 0; i < 10; i++)//set all lasers to null
@@ -418,12 +418,12 @@ int main()
 					}
 					if (ufo_counter == 50)
 					{
-						if (level_colour == 255)
+						if (lvlColour == 255)
 						{
 							CallVoidVoidCFunc(L, "callMessage");
 						}
 						else
-						if (level_colour != 255)
+						if (lvlColour != 255)
 						{
 							CallVoidVoidCFunc(L, "callMessage");
 							al_flush_event_queue(Input_manager->Get_event());//clears the queue of events
@@ -436,8 +436,8 @@ int main()
 									Ufo_lasers[i] = NULL;
 								}
 							}
-							level_colour = level_colour + 5;
-							Level_number++;
+							lvlColour = lvlColour + 5;
+							lvlNumber++;
 							ufo_counter = 0;
 							the_ship->setX(500);//sets the ships position back to the centre of the screen
 							break;
@@ -447,7 +447,7 @@ int main()
 				if (!Input_manager->key_is_pressed(KEY_ENTER))
 				break;
 			}
-			if (Input_manager->key_is_pressed(KEY_ESCAPE) || level_colour == 255 || the_ship->getLives() == 0)
+			if (Input_manager->key_is_pressed(KEY_ESCAPE) || lvlColour == 255 || the_ship->getLives() == 0)
 				break;
 	}
 	///////////////////////////////////////////////
