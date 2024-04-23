@@ -52,7 +52,9 @@ int main()
 	int laserEncounter = LuaGetInt(L, "laserEncounter");//chance of ufo firing
 	int mothershipChance = LuaGetInt(L, "mothershipChance");//chance of mothership appearing
 
-	Game_manager = new Game();
+
+
+	//Game_manager = new Game();
 	Input* Input_manager = new Input();
 	DynamicUfoArray = new Ufo**[5] {};
 	Mothership* the_mothership = NULL;
@@ -61,6 +63,8 @@ int main()
 
 	lvlColour = LuaGetInt(L, "colour");
 	lvlNumber = LuaGetInt(L, "level");
+
+
 
 	the_ship = new Player(pos.x, pos.y, LuaGetInt(L, "lives"), LuaGetStr(L, "playerSprite"));//create the player ship
 	the_ship->addFrame(LuaGetStr(L, "playerSprite"));
@@ -500,6 +504,11 @@ void destroyUFOs()
 			delete DynamicUfoArray[y];
 		}
 	}
+}
+
+void CallInit() 
+{
+	
 }
 
 void spawnUFOs()

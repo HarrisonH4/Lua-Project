@@ -54,7 +54,7 @@ function left( x, currentFrame )
 end
 
 function InitGame()
-	
+	StartGame(screenWidth, screenHeight)
 end
 
 function callMessage()
