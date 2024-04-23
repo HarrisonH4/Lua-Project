@@ -49,8 +49,8 @@ int main()
 	int ufo_counter = 0;//how many ufos destroyed (this tells the game when to start a new level)
 	int lvlColour = LuaGetInt(L, "lvlColour");//for setting the background colour for each level and also defines the max number of levels
 	int lvlNumber = LuaGetInt(L, "lvlNumber");//used for displaying the level number
-	int laser_generator;//chance of ufo firing
-	int Mothership_chance;//chance of mothership appearing
+	int laserEncounter = LuaGetInt(L, "laserEncounter");//chance of ufo firing
+	int mothershipChance = LuaGetInt(L, "mothershipChance");//chance of mothership appearing
 
 	Game_manager = new Game();
 	Input* Input_manager = new Input();
@@ -127,8 +127,8 @@ int main()
 						{
 							if (DynamicUfoArray[y][x] != nullptr)
 							{
-								laser_generator = CallRandomNumber(L, "randomNumber");
-								if (laser_generator >= 9996)
+								laserEncounter = CallRandomNumber(L, "randomNumber");
+								if (laserEncounter >= 9996)
 								{
 									for (int i = 0; i < 10; i++)
 									{
@@ -148,8 +148,8 @@ int main()
 
 					if (the_mothership == NULL)//see if a mothership appears
 					{
-						Mothership_chance = CallRandomNumber(L, "randomNumber");
-						if (Mothership_chance >= 9990)
+						mothershipChance = CallRandomNumber(L, "randomNumber");
+						if (mothershipChance >= 9990)
 						{
 							the_mothership = new Mothership(0, 20, "assets/Mothership.bmp");
 							the_mothership->addFrame("assets/Mothership.bmp");

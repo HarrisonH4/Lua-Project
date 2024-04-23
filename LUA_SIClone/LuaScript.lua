@@ -14,8 +14,8 @@ lifeGain = 2
 settleTheScore = 10000
 lvlNumber = 1
 lvlColour = 0
---mothershipChance
---laserEncounter
+mothershipChance = 0
+laserEncounter = 0
 
 
 math.randomseed(os.time())
