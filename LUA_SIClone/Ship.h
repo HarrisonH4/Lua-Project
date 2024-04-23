@@ -29,6 +29,7 @@ protected:
 	vector<ALLEGRO_BITMAP*> m_ship_images;
 	float m_current_frame;
 	float m_direction_flag;
+	float SWidth, SHeight;
 
 public:
 	//constructor

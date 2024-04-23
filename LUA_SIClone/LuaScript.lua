@@ -17,6 +17,9 @@ lvlColour = 0
 mothershipChance = 0
 laserEncounter = 0
 
+screenWidth = 1000
+screenHeight = 700
+
 
 math.randomseed(os.time())
 
@@ -48,6 +51,10 @@ function left( x, currentFrame )
 		currentFrame = 0
 	end
 	return x,currentFrame
+end
+
+function InitGame()
+	
 end
 
 function callMessage()

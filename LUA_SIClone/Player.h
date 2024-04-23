@@ -49,4 +49,5 @@ public:
 	void reset_score();
 	void right();
 	void left();
+	void InitGame();
 };

@@ -73,6 +73,15 @@ void CallmoveLeft(lua_State* L, const std::string& fname, float& xVal, float& fr
 	lua_pop(L, 2);
 }
 
+void CallInitGame(lua_State* L, const std::string& fname, float SWidth, float SHeight)
+{
+	lua_getglobal(L, fname.c_str());
+	if (!lua_isfunction(L, -1))
+		assert(false);
+	if (!LuaOK(L, lua_pcall(L, 0, 0, 0)))
+		assert(false);
+}
+
 void CallVoidVoidCFunc(lua_State* L, const std::string& fname)
 {
 	lua_getglobal(L, fname.c_str());

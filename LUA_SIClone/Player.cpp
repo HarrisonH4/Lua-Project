@@ -81,3 +81,8 @@ void Player::left()
 {
 	CallmoveLeft(Ls, "left", m_xpos, m_current_frame);
 }
+
+void Player::InitGame()
+{
+	CallInitGame(Ls, "InitGame", SWidth, SHeight);
+}

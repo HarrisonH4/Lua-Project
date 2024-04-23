@@ -43,6 +43,7 @@ int CallRandomNumber(lua_State* L, const std::string& fname);
 void CallmoveRight(lua_State* L, const std::string& fname, float& xVal, float& frameVal);
 void CallmoveLeft(lua_State* L, const std::string& fname, float& xVal, float& frameVal);
 
+void CallInitGame(lua_State* L, const std::string& fname, float SWidth, float SHeight);
 
 int LuaGetInt(lua_State* L, const std::string& name);
 std::string LuaGetStr(lua_State* L, const std::string& name);
